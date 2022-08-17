@@ -27,7 +27,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="ml-[40rem] flex flex-col">
+      <div className="ml-[15%] flex flex-col">
         <button
           className="bg-pink-500 text-black text-center p-2 rounded-md"
           onClick={exampleFetch}
