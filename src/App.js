@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { useDispatch } from "react-redux";
-import { showName } from "./action/index";
+import { showName, addName } from "./action/index";
 import Data from "./Data";
 function App() {
+  const [inputData, setInputData] = useState("");
   const dispatch = useDispatch();
   async function exampleFetch() {
     const response = await fetch("https://swapi.dev/api/people");
@@ -17,15 +18,19 @@ function App() {
         <div className="mt-2">
           <input
             type="text"
+            value={inputData}
+            onChange={(e) => setInputData(e.target.value)}
             className="bg-gray-500 rounded-md text-sm pl-2 py-4 w-[18rem]"
           />
         </div>
         <div className="mt-2">
-          <input
+          <button
             type="Submit"
-            value="submit"
+            onClick={() => dispatch(addName(inputData), setInputData(""))}
             className="border-1 border-black bg-violet-500 rounded-md px-4 py-2 text-center text-yellow-200 "
-          />
+          >
+            submit
+          </button>
         </div>
       </div>
       <div className="ml-[15%] flex flex-col">

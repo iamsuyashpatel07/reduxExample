@@ -10,6 +10,12 @@ const todoReducer = (state = initialData, action) => {
                 ...state,
                 list: data,
             };
+        case "ADD_NAME":
+            const name = action.payload;
+            return {
+                ...state,
+                list: [...state.list, name],
+            };
         default:
             return state;
     }
