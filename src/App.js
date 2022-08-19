@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
+import { useDispatch } from "react-redux";
+import { showName } from "./action/index";
 import Data from "./Data";
 function App() {
-  const [metadata, setMetadata] = useState(null);
+  const dispatch = useDispatch();
   async function exampleFetch() {
-    console.log("suyash");
     const response = await fetch("https://swapi.dev/api/people");
     const json = await response.json();
-    setMetadata(json.results);
+    dispatch(showName(json.results));
   }
   return (
     <div className="App-header">
@@ -30,11 +31,13 @@ function App() {
       <div className="ml-[15%] flex flex-col">
         <button
           className="bg-pink-500 text-black text-center p-2 rounded-md"
-          onClick={exampleFetch}
+          onClick={() => {
+            exampleFetch();
+          }}
         >
           Call Data
         </button>
-        <Data idk={metadata} />
+        <Data />
       </div>
     </div>
   );
