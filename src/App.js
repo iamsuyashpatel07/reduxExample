@@ -6,11 +6,6 @@ import Data from "./Data";
 function App() {
   const [inputData, setInputData] = useState("");
   const dispatch = useDispatch();
-  async function exampleFetch() {
-    const response = await fetch("https://swapi.dev/api/people");
-    const json = await response.json();
-    dispatch(showName(json.results));
-  }
   return (
     <div className="App-header">
       <div className="flex flex-col">
@@ -37,7 +32,7 @@ function App() {
         <button
           className="bg-pink-500 text-black text-center p-2 rounded-md"
           onClick={() => {
-            exampleFetch();
+            dispatch(showName());
           }}
         >
           Call Data
