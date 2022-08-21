@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import { useDispatch } from "react-redux";
-import { showName, addName } from "./action/index";
+import { addName } from "./action/index";
+import { callData } from "./store/store";
 import Data from "./Data";
 function App() {
   const [inputData, setInputData] = useState("");
@@ -32,7 +33,7 @@ function App() {
         <button
           className="bg-pink-500 text-black text-center p-2 rounded-md"
           onClick={() => {
-            dispatch(showName());
+            dispatch(callData());
           }}
         >
           Call Data

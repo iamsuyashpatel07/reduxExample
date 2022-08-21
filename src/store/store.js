@@ -6,9 +6,10 @@ import rootSaga from "../action/index";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+    rootReducer,
+    composeEnhancers(applyMiddleware(sagaMiddleware))
 );
-sagaMiddleware.run(rootSaga);
-
+export function callData() {
+    sagaMiddleware.run(rootSaga);
+}
 export default store;
